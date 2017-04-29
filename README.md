@@ -1,2 +1,2 @@
-# place
-Recreation of Reddit's r/place
+# Place
+Recreation of basic features from Reddit's r/place

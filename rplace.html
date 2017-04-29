@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>r/place</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+	<div class="header">
+		<h2 id="navTitle">r/place recreation</h2>
+		
+		<button onclick="changeColor(1)">Red</button>
+		<button onclick="changeColor(2)">Green</button>
+		<button onclick="changeColor(3)">Blue</button>
+		<button onclick="changeColor(4)">Black</button>
+		<button onclick="changeColor(5)">Yellow</button>
+		<button onclick="changeColor(6)">White</button>
+		
+		<button onclick="toggleScale()">Scale toggle</button>
+		
+		<br />
+		Coordinates: <span id="mousecoords"></span>
+		<br />
+		Last click: <span id="canvasClickCoords"></span>
+		<br />
+	</div>
+	
+	<div id="content" class="content">
+		
+		
+		<div id="canvaswrapper" class="canvasWrap canvasScaleDefault">
+			<canvas id="placecanvas" width="1800" height="500" class="canvas-main" onmousemove="updateMouseCoordinates(event)" onclick="placeRectangle(event)"></canvas>
+		</div>
+		
+
+	
+	</div>
+	
+
+	<script src="controller.js"></script>
+</body>
+
+</html>

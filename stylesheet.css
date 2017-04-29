@@ -1,0 +1,30 @@
+.canvas-main {
+	border: 1px solid black;
+}
+.canvasWrap {
+	display: -moz-inline-block; /* only needed for firefox */
+	transform-origin: left top;
+}
+.canvasScaleZoom {
+	-webkit-transform: scale(5,5);
+	-moz-transform: scale(5,5);
+	transform: scale(5,5);
+}
+.canvasScaleDefault {
+	-webkit-transform: scale(1,1);
+	-moz-transform: scale(1,1);
+	transform: scale(1,1);
+}
+.header {
+	padding: 3px;
+	position: fixed;
+	z-index: 99;
+	height: 140px;
+	background-color: #CCCCCC; /* light grey*/
+	border: 1px solid;
+}
+.content {
+	margin-top: 150px;
+	float: left;
+	cursor: pointer;
+}
