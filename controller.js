@@ -5,8 +5,8 @@ var rectSize = 5;
 var scaling = 1;
 
 // selected color for canvas' pixels/boxes (default black)
-var selectedColor = "#00000";
-
+//var selectedColor = "#000000";
+var selectedColor = rgb(0,0,0); //both work
 
 //var sitename = "r/place recreation";
 //document.getElementById("navTitle").innerHTML=sitename;
@@ -61,14 +61,31 @@ function placeRectangle(e){
 // select color
 function changeColor(p){
 	switch (p){
-		case 1: selectedColor = "#FF0000"; break;
-		case 2: selectedColor = "#00FF00"; break;
-		case 3: selectedColor = "#0000FF"; break;
-		case 4: selectedColor = "#000000"; break;
-		case 5: selectedColor = "#FFFF00"; break;
-		case 6: selectedColor = "#FFFFFF"; break;
-		default: selectedColor = "#000000"; break;
-	};
+		case 0: selectedColor = rgb(255, 255, 255); break;
+		case 1: selectedColor = rgb(228, 228, 228); break;
+		case 2: selectedColor = rgb(136, 136, 136); break;
+		case 3: selectedColor = rgb(34, 34, 34); break;
+		case 4: selectedColor = rgb(255, 167, 209); break;
+		case 5: selectedColor = rgb(229, 0, 0); break;
+		case 6: selectedColor = rgb(229, 149, 0); break;
+		case 7: selectedColor = rgb(160, 106, 66); break;
+		case 8: selectedColor = rgb(229, 217, 0); break;
+		case 9: selectedColor = rgb(148, 224, 68); break;
+		case 10: selectedColor = rgb(2, 190, 1); break;
+		case 11: selectedColor = rgb(0, 211, 221); break;
+		case 12: selectedColor = rgb(0, 131, 199); break;
+		case 13: selectedColor = rgb(0, 0, 234); break;
+		case 14: selectedColor = rgb(207, 110, 228); break;
+		case 15: selectedColor = rgb(130, 0, 128); break;
+		default: selectedColor = rgb(255, 255, 255);
+	}
+
+	console.log("color number: "+p+" selectedColor: "+selectedColor);
+}
+
+// helper function for changing colors, returns CSS color code
+function rgb(r,g,b){
+	return "rgb("+r+","+g+","+b+")";
 }
 
 

@@ -9,11 +9,13 @@
 	-webkit-transform: scale(5,5);
 	-moz-transform: scale(5,5);
 	transform: scale(5,5);
+	padding-bottom: 5px; /* padding to prevent overlap with color selection */
 }
 .canvasScaleDefault {
 	-webkit-transform: scale(1,1);
 	-moz-transform: scale(1,1);
 	transform: scale(1,1);
+	padding-bottom: 45px; /* padding to prevent overlap with color selection */
 }
 .header {
 	padding: 3px;
@@ -26,5 +28,26 @@
 .content {
 	margin-top: 150px;
 	float: left;
+	cursor: pointer;
+}
+.footer {
+	position: fixed;
+	bottom: 0px;
+	left: 50%;
+	margin-left: -262px; /* (width+2*padding)/2 */
+	width: 492px;
+	height: 25px;
+	padding: 10px 16px;
+	/* other properties */
+	background-color: #CCCCCC;
+	border: 1px solid black;
+	border-bottom: none;
+	cursor: default;
+}
+.colorbox {
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	border: 1px solid black;
 	cursor: pointer;
 }
