@@ -30,15 +30,17 @@ var cOffsetTop = canvasOffset.offsetTop;
 
 console.log("offset left: "+cOffsetLeft+" offset top: "+cOffsetTop);
 
+// save current (or last known) mouse position coordinates inside canvas
+var canvasCursorX = 0;
+var canvasCursorY = 0;
+
 // display coords - testing purposes
 function updateMouseCoordinates(e){
-	var x,y;
-	
-	x = e.clientX - cOffsetLeft;
-	y = e.clientY - cOffsetTop;
-	
+	canvasCursorX = e.clientX - cOffsetLeft;
+	canvasCursorY = e.clientY - cOffsetTop;
+
 	// update mouse coords
-	document.getElementById("mousecoords").innerHTML=("x: "+x+" y: "+y);
+	document.getElementById("mousecoords").innerHTML=("x: "+canvasCursorX+" y: "+canvasCursorY);
 }
 
 
@@ -53,7 +55,7 @@ function placeRectangle(e){
 	
 	// display coords - testing purposes
 	document.getElementById("canvasClickCoords").innerHTML=("x: "+rectCoordX+" y: "+rectCoordY);
-	
+
 	//ctx.imageSmoothingEnabled = false;
 	ctx.fillStyle = selectedColor;
 	ctx.fillRect(rectCoordX,rectCoordY,rectSize,rectSize);
@@ -99,7 +101,6 @@ function toggleScale(){
 	// due to css' transform:scale width and height of container element do not get updated
 	// so unfortunately it has to be done by hardcoding new value
 	
-	
 	if(canvasDiv.classList.contains("canvasScaleZoom"))
 	{
 		canvasDiv.classList.remove("canvasScaleZoom");
@@ -117,6 +118,12 @@ function toggleScale(){
 		contentDiv.classList.add("contentZoom");
 
 		scale = scaleZoomed;
+
+		// when zooming in, center on current (or last) mouse position inside the canvas
+		//         (         position on page        * scaled     ) -  centered on screen    + canvas offsets
+		var xpos = ((canvasCursorX + window.scrollX) * scaleZoomed) - (window.innerWidth / 2) + cOffsetLeft;
+		var ypos = ((canvasCursorY + window.scrollY) * scaleZoomed) - (window.innerHeight / 2) + cOffsetTop;
+		window.scrollTo(xpos,ypos);
 	}
 
 	
