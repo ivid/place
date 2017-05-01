@@ -1,8 +1,10 @@
 // fake enum
 var rectSize = 5;
+var scaleDefault = 1; // default scale
+var scaleZoomed = 5; // scale when zoomed in
 
 // determines scale
-var scaling = 1;
+var scale = 1;
 
 // selected color for canvas' pixels/boxes (default black)
 //var selectedColor = "#000000";
@@ -46,8 +48,8 @@ function placeRectangle(e){
 	//TODO: ~4px placing error? likely from smoothing!
 	
 	// determine starting coordinates for rectangle
-	var rectCoordX = Math.floor((e.clientX - cOffsetLeft + window.scrollX)/(rectSize*scaling)) * rectSize;
-	var rectCoordY = Math.floor((e.clientY - cOffsetTop + window.scrollY)/(rectSize*scaling)) * rectSize;
+	var rectCoordX = Math.floor((e.clientX - cOffsetLeft + window.scrollX)/(rectSize*scale)) * rectSize;
+	var rectCoordY = Math.floor((e.clientY - cOffsetTop + window.scrollY)/(rectSize*scale)) * rectSize;
 	
 	// display coords - testing purposes
 	document.getElementById("canvasClickCoords").innerHTML=("x: "+rectCoordX+" y: "+rectCoordY);
@@ -90,21 +92,33 @@ function rgb(r,g,b){
 
 
 function toggleScale(){
-	var doc = document.getElementById("canvaswrapper");
+	var canvasDiv = document.getElementById("canvaswrapper");
+	var contentDiv = document.getElementById("content");
 	
-	if(doc.classList.contains("canvasScaleZoom"))
+	// TODO: futher improve
+	// due to css' transform:scale width and height of container element do not get updated
+	// so unfortunately it has to be done by hardcoding new value
+	
+	
+	if(canvasDiv.classList.contains("canvasScaleZoom"))
 	{
-		doc.classList.remove("canvasScaleZoom");
-		doc.classList.add("canvasScaleDefault");
-		scaling = 1;
+		canvasDiv.classList.remove("canvasScaleZoom");
+		canvasDiv.classList.add("canvasScaleDefault");
+
+		contentDiv.classList.remove("contentZoom");
+
+		scale = scaleDefault;
 	}
 	else
 	{
-		doc.classList.remove("canvasScaleDefault");
-		doc.classList.add("canvasScaleZoom");
-		scaling = 5;
+		canvasDiv.classList.remove("canvasScaleDefault");
+		canvasDiv.classList.add("canvasScaleZoom");
+
+		contentDiv.classList.add("contentZoom");
+
+		scale = scaleZoomed;
 	}
-	
+
 	
 	//document.getElementById("placecanvas").style.transform = 'scale(0.7,0.7)';
 	//document.getElementById("placecanvas").style.transform = 'translate(-100px,-150px)';
